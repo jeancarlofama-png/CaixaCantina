@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixa Pastelaria</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .item1 {
+            background-color: #d9ff00;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .item2 {
+            background-color: #e6a10c;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .item3 {
+            background-color: hsl(209, 100%, 74%);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .item4 {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .item5 {
+            background-color: #7ad5ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .item-name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .item-price {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+        }
+        .quantity {
+            margin: 0 10px;
+            font-size: 18px;
+            min-width: 20px;
+            text-align: center;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 16px;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+        button:active {
+            background-color: #2980b9;
+        }
+        .total {
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .reset-btn {
+            background-color: #e74c3c;
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Caixa Pastelaria</h1>
+
+    <div class="item1">
+        <div>
+            <div class="item-name">Salgado</div>
+            <div class="item-price">R$ 7,00</div>
+        </div>
+        <div class="quantity-controls">
+            <button type="button" onclick="changeQuantity('salgado', -1)">−</button>
+            <div class="quantity" id="salgado-qty">0</div>
+            <button type="button" onclick="changeQuantity('salgado', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="item2">
+        <div>
+            <div class="item-name">Caldo</div>
+            <div class="item-price">R$ 7,00</div>
+        </div>
+        <div class="quantity-controls">
+            <button type="button" onclick="changeQuantity('caldo', -1)">−</button>
+            <div class="quantity" id="caldo-qty">0</div>
+            <button type="button" onclick="changeQuantity('caldo', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="item3">
+        <div>
+            <div class="item-name">Doce</div>
+            <div class="item-price">R$ 5,00</div>
+        </div>
+        <div class="quantity-controls">
+            <button type="button" onclick="changeQuantity('doce', -1)">−</button>
+            <div class="quantity" id="doce-qty">0</div>
+            <button type="button" onclick="changeQuantity('doce', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="item4">
+        <div>
+            <div class="item-name">Suco</div>
+            <div class="item-price">R$ 5,00</div>
+        </div>
+        <div class="quantity-controls">
+            <button type="button" onclick="changeQuantity('suco', -1)">−</button>
+            <div class="quantity" id="suco-qty">0</div>
+            <button type="button" onclick="changeQuantity('suco', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="item5">
+        <div>
+            <div class="item-name">Refrigerante</div>
+            <div class="item-price">R$ 3,00</div>
+        </div>
+        <div class="quantity-controls">
+            <button type="button" onclick="changeQuantity('refri', -1)">−</button>
+            <div class="quantity" id="refri-qty">0</div>
+            <button type="button" onclick="changeQuantity('refri', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="total" id="total">
+        Total: R$ 0,00
+    </div>
+
+    <button class="reset-btn" onclick="resetAll()">Zerar Tudo</button>
+
+    <script>
+        const prices = {
+            salgado: 7.00,
+            caldo: 7.00,
+            doce: 5.00,
+            suco: 5.00,
+            refri: 3.00
+        };
+
+        const quantities = {
+            salgado: 0,
+            caldo: 0,
+            doce: 0,
+            suco: 0,
+            refri: 0
+        };
+
+        function changeQuantity(item, change) {
+            quantities[item] += change;
+            if (quantities[item] < 0) quantities[item] = 0;
+            document.getElementById(item + '-qty').textContent = quantities[item];
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            for (let item in prices) {
+                total += quantities[item] * prices[item];
+            }
+            document.getElementById('total').textContent = 'Total: R$ ' + total.toFixed(2).replace('.', ',');
+        }
+
+        function resetAll() {
+            for (let item in quantities) {
+                quantities[item] = 0;
+                document.getElementById(item + '-qty').textContent = '0';
+            }
+            calculateTotal();
+        }
+    </script>
+</body>
+</html>
